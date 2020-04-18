@@ -18,6 +18,12 @@ public class KickManager : MonoBehaviour
         {
             m_playerController.CollidingTerrier = ts;
         }
+
+        var ce = collision.GetComponent<CoalEater>();
+        if (ce != null)
+        {
+            m_playerController.CollidingCoalEater = ce;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -25,6 +31,11 @@ public class KickManager : MonoBehaviour
         if (collision.GetComponent<TerrierSpawner>() != null)
         {
             m_playerController.CollidingTerrier = null;
+        }
+
+        if (collision.GetComponent<CoalEater>() != null)
+        {
+            m_playerController.CollidingCoalEater = null;
         }
     }
 }

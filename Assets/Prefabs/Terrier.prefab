@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5317020298062508762}
   - component: {fileID: 5317020298062508763}
   - component: {fileID: 2757419392586628026}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Terrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

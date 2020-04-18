@@ -7,9 +7,14 @@ public class CoalBall : MonoBehaviour
     public static float Speed = 5;
     private Vector3 m_direction;
 
+    public List<CoalEater> Predators;
+    private bool m_isUnregistered = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        Predators = new List<CoalEater>();
+        WorldGenerator.Instance.EatableCoalList.Add(gameObject);
         m_direction = Vector3.Normalize(FireManager.GOInstance.transform.position - transform.position);
     }
 
@@ -21,11 +26,41 @@ public class CoalBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        FireManager fm = collision.gameObject.GetComponent<FireManager>();
-        if (fm != null)
+        if (collision.gameObject.CompareTag("LightFire"))
         {
-            fm.GrowFire();
-            Destroy(gameObject);
+            Unregister();
         }
+
+        //FireManager fm = collision.gameObject.GetComponent<FireManager>();
+        if (collision.gameObject.CompareTag("Fire"))
+        {
+            collision.gameObject.GetComponent<FireManager>().GrowFire();
+            DestroyBall();
+        }
+    }
+
+    private void Unregister()
+    {
+        WorldGenerator.Instance.EatableCoalList.Remove(gameObject);
+        foreach (var p in Predators)
+        {
+            p.CoalBallDisappear();
+        }
+        m_isUnregistered = true;
+    }
+
+    public void DestroyBall()
+    {
+        if (!m_isUnregistered)
+        {
+            Unregister();
+        }
+
+        Destroy(gameObject);
+    }
+
+    public void RegisterPredator(CoalEater predator)
+    {
+        Predators.Add(predator);
     }
 }

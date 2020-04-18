@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - LightFire
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - Fire
   - Player
   - Coal
-  - 
-  - 
-  - 
+  - LightRadius
+  - Boundaries
+  - CoalEater
   - 
   - 
   - 
