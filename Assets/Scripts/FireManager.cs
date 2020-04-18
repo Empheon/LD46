@@ -8,6 +8,8 @@ public class FireManager : MonoBehaviour
     public float ReduceFactor = 0.01f; // percent lost
     public float GameOverThreshold = 0.005f;
 
+    public float MaxSize = 1.5f;
+
     public static GameObject GOInstance;
 
     private void Awake()
@@ -46,5 +48,9 @@ public class FireManager : MonoBehaviour
     private void ScaleFire(float amount)
     {
         transform.localScale += Vector3.one * amount;
+    }
+
+    public float GetFireSize(){
+        return transform.localScale.x / MaxSize;
     }
 }
