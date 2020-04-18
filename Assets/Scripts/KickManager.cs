@@ -16,26 +16,28 @@ public class KickManager : MonoBehaviour
         var ts = collision.GetComponent<TerrierSpawner>();
         if (ts != null)
         {
-            m_playerController.CollidingTerrier = ts;
+            m_playerController.CollidingTerrier.Add(ts);
         }
 
         var ce = collision.GetComponent<CoalEater>();
         if (ce != null)
         {
-            m_playerController.CollidingCoalEater = ce;
+            m_playerController.CollidingCoalEater.Add(ce);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<TerrierSpawner>() != null)
+        var ts = collision.GetComponent<TerrierSpawner>();
+        if (ts != null)
         {
-            m_playerController.CollidingTerrier = null;
+            m_playerController.CollidingTerrier.Remove(ts);
         }
 
-        if (collision.GetComponent<CoalEater>() != null)
+        var ce = collision.GetComponent<CoalEater>();
+        if (ce != null)
         {
-            m_playerController.CollidingCoalEater = null;
+            m_playerController.CollidingCoalEater.Remove(ce);
         }
     }
 }

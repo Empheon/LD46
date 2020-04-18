@@ -7,7 +7,9 @@ public class CoalEater : MonoBehaviour
     public float Speed = 5;
     public float ExplusionSpeed = 10;
     public float Torque = 60;
+    public SpriteRenderer MonsterSprite;
     private GameObject m_currentCoalBall;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,14 @@ public class CoalEater : MonoBehaviour
 
         var direction = Vector3.Normalize(m_currentCoalBall.transform.position - transform.position);
         transform.Translate(direction * Speed * Time.deltaTime);
+
+        if (direction.x > 0)
+        {
+            MonsterSprite.flipX = false;
+        } else
+        {
+            MonsterSprite.flipX = true;
+        }
     }
 
     private GameObject FindRandomCoalBall()
@@ -89,6 +99,7 @@ public class CoalEater : MonoBehaviour
         rigidbody.constraints = RigidbodyConstraints2D.None;
         rigidbody.AddForce(Vector3.Normalize(transform.position - playerPosition) * ExplusionSpeed, ForceMode2D.Impulse);
         rigidbody.AddTorque(Torque);
+        GetComponent<CapsuleCollider2D>().enabled = false;
         Speed = 0;
     }
 }

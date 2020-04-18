@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float Speed = 5;
     public BoxCollider2D KickCollider;
-    public TerrierSpawner CollidingTerrier;
-    public CoalEater CollidingCoalEater;
+    public List<TerrierSpawner> CollidingTerrier;
+    public List<CoalEater> CollidingCoalEater;
     public GameObject AnimatedObject;
 
     private Rigidbody2D m_rigidbody;
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CollidingTerrier = new List<TerrierSpawner>();
+        CollidingCoalEater = new List<CoalEater>();
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_kickColliderX = KickCollider.transform.position.x;
         m_playerSprite = AnimatedObject.GetComponent<SpriteRenderer>();
@@ -42,12 +44,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Kick") && CollidingTerrier != null)
         {
-            CollidingTerrier.Awaken();
+            
+            CollidingTerrier.ForEach(x => x.Awaken());
         }
 
         if (Input.GetButtonDown("Kick") && CollidingCoalEater != null)
         {
-            CollidingCoalEater.Die(transform.position);
+            CollidingCoalEater.ForEach(x => x.Die(transform.position));
         }
     }
 }

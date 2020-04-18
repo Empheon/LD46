@@ -9,6 +9,7 @@ public class CoalBall : MonoBehaviour
 
     public List<CoalEater> Predators;
     private bool m_isUnregistered = false;
+    public SpriteRenderer AnimSpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,13 @@ public class CoalBall : MonoBehaviour
         Predators = new List<CoalEater>();
         WorldGenerator.Instance.EatableCoalList.Add(gameObject);
         m_direction = Vector3.Normalize(FireManager.GOInstance.transform.position - transform.position);
+        if (m_direction.x > 0)
+        {
+            AnimSpriteRenderer.flipX = false;
+        } else
+        {
+            AnimSpriteRenderer.flipX = true;
+        }
     }
 
     // Update is called once per frame
