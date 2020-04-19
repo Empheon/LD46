@@ -19,10 +19,10 @@ public class KickManager : MonoBehaviour
             m_playerController.CollidingTerrier.Add(ts);
         }
 
-        var ce = collision.GetComponent<CoalEater>();
-        if (ce != null)
+        var e = collision.GetComponent<Eater>();
+        if (e != null)
         {
-            m_playerController.CollidingCoalEater.Add(ce);
+            m_playerController.CollidingEater.Add(e);
         }
     }
 
@@ -34,10 +34,10 @@ public class KickManager : MonoBehaviour
             m_playerController.CollidingTerrier.Remove(ts);
         }
 
-        var ce = collision.GetComponent<CoalEater>();
-        if (ce != null)
+        var e = collision.GetComponent<Eater>();
+        if (e != null)
         {
-            m_playerController.CollidingCoalEater.Remove(ce);
+            m_playerController.CollidingEater.Remove(e);
         }
     }
 }

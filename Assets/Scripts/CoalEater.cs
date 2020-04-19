@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoalEater : MonoBehaviour
+public class CoalEater : Eater
 {
-    public float Speed = 5;
-    public float ExplusionSpeed = 10;
-    public float Torque = 60;
-    public SpriteRenderer MonsterSprite;
     private GameObject m_currentCoalBall;
 
+    private float m_refocusTimer = 1;
+    private float m_timer;
 
     // Start is called before the first frame update
     void Start()
     {
         if (WorldGenerator.Instance.EatableCoalList.Count == 0)
         {
-            m_currentCoalBall = FindRandomCoalBall();
+            m_currentCoalBall = FindClosestCoalBall();
             m_currentCoalBall.GetComponent<CoalBall>().RegisterPredator(this);
         }
     }
@@ -24,7 +22,7 @@ public class CoalEater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(transform.position.x) + Mathf.Abs(transform.position.y) > 200)
+        if ((WorldGenerator.Instance.PlayerInstance.transform.position - transform.position).sqrMagnitude > 10000)
         {
             Destroy(gameObject);
         }
@@ -33,6 +31,16 @@ public class CoalEater : MonoBehaviour
             // No ball anymore? Let's make it disappear for now
             Destroy(gameObject);
             return;
+        }
+
+        if (m_currentCoalBall != null && m_timer < m_refocusTimer)
+        {
+            m_currentCoalBall.GetComponent<CoalBall>().UnregisterPredator(this);
+            m_currentCoalBall = null;
+            m_timer = 0;
+        } else
+        {
+            m_timer += Time.deltaTime;
         }
 
         if (m_currentCoalBall == null)
@@ -91,15 +99,5 @@ public class CoalEater : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void Die(Vector3 playerPosition)
-    {
-        var rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.constraints = RigidbodyConstraints2D.None;
-        rigidbody.AddForce(Vector3.Normalize(transform.position - playerPosition) * ExplusionSpeed, ForceMode2D.Impulse);
-        rigidbody.AddTorque(Torque);
-        GetComponent<CapsuleCollider2D>().enabled = false;
-        Speed = 0;
     }
 }

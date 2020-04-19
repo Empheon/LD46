@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoalBall : MonoBehaviour
 {
-    public static float Speed = 5;
+    public static float Speed = 4;
     private Vector3 m_direction;
 
     public List<CoalEater> Predators;
@@ -15,12 +15,16 @@ public class CoalBall : MonoBehaviour
     void Start()
     {
         Predators = new List<CoalEater>();
+        Init();
+    }
+
+    public void Init()
+    {
+        m_isUnregistered = false;
+        Predators.Clear();
         WorldGenerator.Instance.EatableCoalList.Add(gameObject);
         m_direction = Vector3.Normalize(FireManager.GOInstance.transform.position - transform.position);
-        if (m_direction.x > 0)
-        {
-            AnimSpriteRenderer.flipX = false;
-        } else
+        if (m_direction.x < 0)
         {
             AnimSpriteRenderer.flipX = true;
         }
@@ -63,11 +67,16 @@ public class CoalBall : MonoBehaviour
         {
             Unregister();
         }
-
-        Destroy(gameObject);
+        TerrierSpawner.ReleaseBall(gameObject);
+        //Destroy(gameObject);
     }
 
     public void RegisterPredator(CoalEater predator)
+    {
+        Predators.Add(predator);
+    }
+
+    public void UnregisterPredator(CoalEater predator)
     {
         Predators.Add(predator);
     }

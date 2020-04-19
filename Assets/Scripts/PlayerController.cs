@@ -7,28 +7,39 @@ public class PlayerController : MonoBehaviour
     public float Speed = 5;
     public BoxCollider2D KickCollider;
     public List<TerrierSpawner> CollidingTerrier;
-    public List<CoalEater> CollidingCoalEater;
+    public List<Eater> CollidingEater;
     public GameObject AnimatedObject;
+    public int HitPoints = 3;
 
     private Rigidbody2D m_rigidbody;
     private float m_kickColliderX;
     private SpriteRenderer m_playerSprite;
+    private Animator m_playerAnimator;
+    private bool m_isInvincible = false;
+    private float m_blinkSpeed = .1f;
 
     // Start is called before the first frame update
     void Start()
     {
         CollidingTerrier = new List<TerrierSpawner>();
-        CollidingCoalEater = new List<CoalEater>();
+        CollidingEater = new List<Eater>();
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_kickColliderX = KickCollider.transform.position.x;
         m_playerSprite = AnimatedObject.GetComponent<SpriteRenderer>();
+        m_playerAnimator = AnimatedObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (HitPoints <= 0)
+        {
+            Debug.Log("Game over no health");
+        }
         var hAxis = Input.GetAxis("Horizontal");
-        transform.Translate(new Vector3(hAxis, Input.GetAxis("Vertical"), 0) * Time.deltaTime * Speed);
+        var vAxis = Input.GetAxis("Vertical");
+        transform.Translate(new Vector3(hAxis, vAxis, 0) * Time.deltaTime * Speed);
+        m_playerAnimator.SetFloat("Velocity", hAxis * hAxis + vAxis * vAxis);
 
         if (Mathf.Abs(hAxis) > 0.00001)
         {
@@ -48,9 +59,32 @@ public class PlayerController : MonoBehaviour
             CollidingTerrier.ForEach(x => x.Awaken());
         }
 
-        if (Input.GetButtonDown("Kick") && CollidingCoalEater != null)
+        if (Input.GetButtonDown("Kick") && CollidingEater != null)
         {
-            CollidingCoalEater.ForEach(x => x.Die(transform.position));
+            CollidingEater.ForEach(x => x.Die(transform.position));
+            CollidingEater.Clear();
         }
+    }
+
+    public void LooseHP(int hp = 1)
+    {
+        if (!m_isInvincible)
+        {
+            HitPoints -= hp;
+            m_isInvincible = true;
+            StartCoroutine(Blink());
+        }
+    }
+
+    IEnumerator Blink()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            m_playerSprite.color = new Color(1, .27f, .27f);
+            yield return new WaitForSeconds(m_blinkSpeed);
+            m_playerSprite.color = Color.white;
+            yield return new WaitForSeconds(m_blinkSpeed);
+        }
+        m_isInvincible = false;
     }
 }

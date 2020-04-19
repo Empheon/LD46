@@ -5,15 +5,19 @@ using UnityEngine;
 public class WorldGenerator : MonoBehaviour
 {
     public GameObject Terrier;
+    public GameObject PlayerInstance;
     public int TerrierNumber;
     public float CoalEaterSpawnFrequency = 5;
+    public float ManEaterSpawnFrequency = 10;
 
     public List<GameObject> EatableCoalList;
     public GameObject CoalEater;
+    public GameObject ManEater;
 
     private const float m_boundX = 80-10;
     private const float m_boundY = 60-10;
     private float m_coalEaterTimer;
+    private float m_manEaterTimer;
 
     public static WorldGenerator Instance;
 
@@ -47,6 +51,17 @@ public class WorldGenerator : MonoBehaviour
             m_coalEaterTimer = 0;
             
             Instantiate(CoalEater, GeneratePosition(), Quaternion.identity);
+        }
+
+        // Spawn ManEater
+        if (m_manEaterTimer < ManEaterSpawnFrequency + Random.Range(-1f, 5f))
+        {
+            m_manEaterTimer += Time.deltaTime;
+        } else
+        {
+            m_manEaterTimer = 0;
+
+            Instantiate(ManEater, GeneratePosition(), Quaternion.identity);
         }
     }
 

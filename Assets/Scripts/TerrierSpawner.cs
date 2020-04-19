@@ -12,9 +12,15 @@ public class TerrierSpawner : MonoBehaviour
     private TerrierState m_state;
     private float m_counter;
 
+    private static Queue<GameObject> m_ballPool;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (m_ballPool == null)
+        {
+            m_ballPool = new Queue<GameObject>();
+        }
         m_state = TerrierState.SLEEPING;
         m_counter = SpawnFrequency;
     }
@@ -31,7 +37,7 @@ public class TerrierSpawner : MonoBehaviour
                 } else
                 {
                     m_counter = 0;
-                    Instantiate(CoalBall, transform.position, Quaternion.identity);
+                    NewBallAt(transform.position);
                 }
                 break;
             case TerrierState.SLEEPING:
@@ -48,5 +54,25 @@ public class TerrierSpawner : MonoBehaviour
     public void PutToSleep()
     {
         m_state = TerrierState.SLEEPING;
+    }
+
+    private void NewBallAt(Vector3 pos)
+    {
+        if (m_ballPool.Count == 0)
+        {
+            Instantiate(CoalBall, pos, Quaternion.identity);
+        } else
+        {
+            var gO = m_ballPool.Dequeue();
+            gO.SetActive(true);
+            gO.transform.position = pos;
+            gO.GetComponent<CoalBall>().Init();
+        }
+    }
+
+    public static void ReleaseBall(GameObject gO)
+    {
+        gO.SetActive(false);
+        m_ballPool.Enqueue(gO);
     }
 }
