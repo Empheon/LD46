@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         CollidingTerrier = new List<TerrierSpawner>();
         CollidingEater = new List<Eater>();
         m_rigidbody = GetComponent<Rigidbody2D>();
-        m_kickColliderX = KickCollider.transform.position.x;
+        m_kickColliderX = 2.20f;
         m_playerSprite = AnimatedObject.GetComponent<SpriteRenderer>();
         m_playerAnimator = AnimatedObject.GetComponent<Animator>();
     }

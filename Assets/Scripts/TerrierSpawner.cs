@@ -13,10 +13,12 @@ public class TerrierSpawner : MonoBehaviour
     private float m_counter;
 
     private static Queue<GameObject> m_ballPool;
+    private Animator m_animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_animator = GetComponent<Animator>();
         if (m_ballPool == null)
         {
             m_ballPool = new Queue<GameObject>();
@@ -48,8 +50,14 @@ public class TerrierSpawner : MonoBehaviour
 
     public void Awaken()
     {
-        // TODO change sprite
         m_state = TerrierState.AWAKE;
+        if (WorldGenerator.Instance.PlayerInstance.transform.position.x < transform.position.x)
+        {
+            m_animator.SetTrigger("Left");
+        } else
+        {
+            m_animator.SetTrigger("Right");
+        }
     }
 
     public void PutToSleep()
