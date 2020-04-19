@@ -150,8 +150,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02552849, y: -0.078672886}
-  m_Size: {x: 1.6629912, y: 5.186731}
+  m_Offset: {x: 0.02552849, y: -0.67480016}
+  m_Size: {x: 1.6629912, y: 3.9944763}
   m_Direction: 0
 --- !u!50 &7033486281184157630
 Rigidbody2D:
@@ -186,11 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1409bfa18745a40a6dfb3556b1bbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shadow: {fileID: 8715533182622334786}
+  MainSprite: {fileID: 7592953328637302691}
   Speed: 7
   ExplusionSpeed: 40
   Torque: 600
   MonsterSprite: {fileID: 7592953328637302691}
-  Shadow: {fileID: 5291921280878419803}
 --- !u!1 &5291921280878419803
 GameObject:
   m_ObjectHideFlags: 0

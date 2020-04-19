@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Eater : MonoBehaviour
+public class Eater : MovingThing
 {
     public float Speed = 5;
     public float ExplusionSpeed = 10;
     public float Torque = 60;
     public SpriteRenderer MonsterSprite;
-    public GameObject Shadow;
     
     virtual public void Die(Vector3 playerPosition)
     {
@@ -18,6 +17,6 @@ public class Eater : MonoBehaviour
         rigidbody.AddTorque(Torque);
         GetComponent<CapsuleCollider2D>().enabled = false;
         Speed = 0;
-        Shadow.SetActive(false);
+        Shadow.gameObject.SetActive(false);
     }
 }

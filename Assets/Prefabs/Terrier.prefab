@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -50
+  m_SortingOrder: -32100
   m_Sprite: {fileID: 21300000, guid: fd803e142c29d6540a7aa5608e3a1f31, type: 3}
   m_Color: {r: 0.1882353, g: 0.1882353, b: 0.1882353, a: 1}
   m_FlipX: 0
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5317020298062508760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.198, y: -0.069, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6836358586302888821}
@@ -193,11 +193,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.1299938, y: -0.10229512}
-      - {x: -0.59326845, y: 0.58479124}
-      - {x: 0.31274587, y: 0.88501215}
-      - {x: 1.1337076, y: 0.73032075}
-      - {x: 1.4004017, y: 0.5518518}
+    - - {x: -1.087667, y: -0.19753018}
+      - {x: 1.2426338, y: -0.14831339}
       - {x: 1.4682986, y: -1.3368635}
       - {x: -1.3588426, y: -1.3377343}
 --- !u!114 &2757419392586628026
@@ -306,7 +303,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -15
+  m_SortingOrder: -32000
   m_Sprite: {fileID: 21300000, guid: fd803e142c29d6540a7aa5608e3a1f31, type: 3}
   m_Color: {r: 0.8915094, g: 0.9877375, b: 1, a: 0.5019608}
   m_FlipX: 0

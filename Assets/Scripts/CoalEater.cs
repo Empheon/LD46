@@ -171,7 +171,7 @@ public class CoalEater : Eater
     {
         base.Die(playerPosition);
         m_isDying = true;
-        if (m_currentFocusObject != null)
+        if (m_currentFocusObject != null && m_currentFocusObject.GetComponent<CoalBall>() != null)
         {
             m_currentFocusObject.GetComponent<CoalBall>().UnregisterPredator(this);
         }

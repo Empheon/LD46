@@ -301,6 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54bd25ffcdedcc7458486f7b2ae66e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shadow: {fileID: 3522519554208326093}
+  MainSprite: {fileID: 7593643302739961852}
   Speed: 15
   KickCollider: {fileID: 1345352798}
   CollidingTerrier:
@@ -342,6 +344,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.3, y: 4.87}
+  m_Offset: {x: 0, y: -0.4966743}
+  m_Size: {x: 1.3, y: 3.8766513}
   m_Direction: 0

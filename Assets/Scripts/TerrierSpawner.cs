@@ -36,6 +36,8 @@ public class TerrierSpawner : MonoBehaviour
 
         m_glowColor = Glow.color;
         Glow.color = m_transparent;
+
+        GetComponent<SpriteRenderer>().sortingOrder = (int)-(transform.position.y * 100);
     }
 
     // Update is called once per frame
@@ -60,6 +62,11 @@ public class TerrierSpawner : MonoBehaviour
 
     public void Awaken()
     {
+        if (Status == TerrierState.AWAKE)
+        {
+            return;
+        }
+
         Status = TerrierState.AWAKE;
         StartCoroutine(GlowOn());
         if (WorldGenerator.Instance.PlayerInstance.transform.position.x < transform.position.x)
@@ -74,6 +81,11 @@ public class TerrierSpawner : MonoBehaviour
 
     public void PutToSleep()
     {
+        if (Status == TerrierState.SLEEPING)
+        {
+            return;
+        }
+
         Status = TerrierState.SLEEPING;
         StartCoroutine(GlowOff());
         AwokeTerriers.Remove(this);

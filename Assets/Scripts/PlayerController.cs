@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MovingThing
 {
     public float Speed = 5;
     public BoxCollider2D KickCollider;
