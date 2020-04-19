@@ -58,6 +58,7 @@ public class CoalBall : MonoBehaviour
         {
             p.CoalBallDisappear();
         }
+        Predators.Clear();
         m_isUnregistered = true;
     }
 
@@ -78,6 +79,9 @@ public class CoalBall : MonoBehaviour
 
     public void UnregisterPredator(CoalEater predator)
     {
-        Predators.Add(predator);
+        if (!m_isUnregistered)
+        {
+            Predators.Remove(predator);
+        }
     }
 }

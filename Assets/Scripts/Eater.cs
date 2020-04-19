@@ -9,7 +9,7 @@ public class Eater : MonoBehaviour
     public float Torque = 60;
     public SpriteRenderer MonsterSprite;
     
-    public void Die(Vector3 playerPosition)
+    virtual public void Die(Vector3 playerPosition)
     {
         var rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.constraints = RigidbodyConstraints2D.None;

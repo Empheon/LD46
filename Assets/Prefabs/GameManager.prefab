@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211112004210531455}
   - component: {fileID: 8211112004210531454}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bound (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,8 +104,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53948f3fc347dec46affe59c3887a249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Terrier: {fileID: 0}
+  Terrier: {fileID: 5317020298062508760, guid: 2a6b7f7dab1462b46a745b278fbda9ed, type: 3}
+  PlayerInstance: {fileID: 0}
   TerrierNumber: 20
+  CoalEaterSpawnFrequency: 5
+  ManEaterSpawnFrequency: 10
+  EatableCoalList: []
+  CoalEater: {fileID: 8554614013094629109, guid: e4193ec8ead3d5b47b92bafafd0825a0,
+    type: 3}
+  ManEater: {fileID: 2421908219657376757, guid: 140759f71b919aa46bd08f336a4ec776,
+    type: 3}
 --- !u!1 &8211112005210348253
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211112005210348252}
   - component: {fileID: 8211112005210348227}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211112005478463952}
   - component: {fileID: 8211112005478463959}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bound (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211112005688939482}
   - component: {fileID: 8211112005688939481}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bound (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

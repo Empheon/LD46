@@ -8,6 +8,7 @@ public class CoalEater : Eater
 
     private float m_refocusTimer = 1;
     private float m_timer;
+    private bool m_isDying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +27,18 @@ public class CoalEater : Eater
         {
             Destroy(gameObject);
         }
-        if (WorldGenerator.Instance.EatableCoalList.Count == 0)
+        if (m_isDying)
+        {
+            return;
+        }
+        if (WorldGenerator.Instance.EatableCoalList.Count == 0 && m_currentCoalBall == null)
         {
             // No ball anymore? Let's make it disappear for now
-            Destroy(gameObject);
+            Die(new Vector3(0, 0, 0));
             return;
         }
 
-        if (m_currentCoalBall != null && m_timer < m_refocusTimer)
+        if (m_currentCoalBall != null && m_timer > m_refocusTimer)
         {
             m_currentCoalBall.GetComponent<CoalBall>().UnregisterPredator(this);
             m_currentCoalBall = null;
@@ -94,10 +99,15 @@ public class CoalEater : Eater
         {
             cb.DestroyBall();
         }
+    }
 
-        if (collision.gameObject.CompareTag("LightFire"))
+    public override void Die(Vector3 playerPosition)
+    {
+        base.Die(playerPosition);
+        m_isDying = true;
+        if (m_currentCoalBall != null)
         {
-            Destroy(gameObject);
+            m_currentCoalBall.GetComponent<CoalBall>().UnregisterPredator(this);
         }
     }
 }
