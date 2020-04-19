@@ -21,6 +21,7 @@ public class TerrierSpawner : MonoBehaviour
         {
             m_ballPool = new Queue<GameObject>();
         }
+        m_ballPool.Clear(); // Because of fast play mode, doesn't reload static vars
         m_state = TerrierState.SLEEPING;
         m_counter = SpawnFrequency;
     }

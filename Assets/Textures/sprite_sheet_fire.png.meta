@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 4f50587f50779a44b9bd5e4f634bb560
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7986390570405619138
+    second: sprite_sheet_fire_0
+  - first:
+      213: 8770105031521832832
+    second: sprite_sheet_fire_1
+  - first:
+      213: 3600869532847492402
+    second: sprite_sheet_fire_2
+  - first:
+      213: -2753973615568996028
+    second: sprite_sheet_fire_3
+  - first:
+      213: -6857770794572921098
+    second: sprite_sheet_fire_4
+  - first:
+      213: 4058236446351061500
+    second: sprite_sheet_fire_5
+  - first:
+      213: 1770209041523026778
+    second: sprite_sheet_fire_6
+  - first:
+      213: 4354500706482862200
+    second: sprite_sheet_fire_7
+  - first:
+      213: 1792979216348475225
+    second: sprite_sheet_fire_8
+  - first:
+      213: -4351685232531922712
+    second: sprite_sheet_fire_9
+  - first:
+      213: -7705265157557058393
+    second: sprite_sheet_fire_10
+  - first:
+      213: -6461177368631592626
+    second: sprite_sheet_fire_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +106,129 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sprite_sheet_fire_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 2127
+        width: 1217
+        height: 1896
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c56e8af8eb55de60800000000000000
+      internalID: 7986390570405619138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_fire_2
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 2127
+        width: 1219
+        height: 1922
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23dc6eb03cbd8f130800000000000000
+      internalID: 3600869532847492402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_fire_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 82
+        width: 1219
+        height: 1942
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b2a2a8ebb019810800000000000000
+      internalID: 1770209041523026778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_fire_8
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 82
+        width: 1217
+        height: 1905
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95feb100911f1e810800000000000000
+      internalID: 1792979216348475225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

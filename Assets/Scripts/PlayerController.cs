@@ -53,16 +53,23 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Kick") && CollidingTerrier != null)
+        if (Input.GetButtonDown("Kick") && CollidingTerrier.Count > 0)
         {
-            
             CollidingTerrier.ForEach(x => x.Awaken());
+            m_playerAnimator.SetTrigger("Kick");
+            Debug.Log("k");
         }
 
-        if (Input.GetButtonDown("Kick") && CollidingEater != null)
+        if (Input.GetButtonDown("Kick") && CollidingEater.Count > 0)
         {
+            m_playerAnimator.SetTrigger("Punch");
+            Debug.Log("p");
             CollidingEater.ForEach(x => x.Die(transform.position));
             CollidingEater.Clear();
+        } else if (Input.GetButtonDown("Kick"))
+        {
+            m_playerAnimator.SetTrigger("Kick");
+            Debug.Log("kk");
         }
     }
 

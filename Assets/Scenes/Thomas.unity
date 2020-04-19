@@ -1352,16 +1352,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1343488084452267586, guid: e7a53befeb29459478dea1a84a8032a2,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1343488084452267586, guid: e7a53befeb29459478dea1a84a8032a2,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 2819738278041125704, guid: e7a53befeb29459478dea1a84a8032a2,
         type: 3}
       propertyPath: m_Name
@@ -1421,21 +1411,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819738278041125749, guid: e7a53befeb29459478dea1a84a8032a2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819738278041125749, guid: e7a53befeb29459478dea1a84a8032a2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819738278041125749, guid: e7a53befeb29459478dea1a84a8032a2,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a53befeb29459478dea1a84a8032a2, type: 3}
@@ -1575,6 +1550,11 @@ PrefabInstance:
       propertyPath: PlayerInstance
       value: 
       objectReference: {fileID: 1191112186}
+    - target: {fileID: 8211112004894342078, guid: 32cb373782512a145a0df88710017ab5,
+        type: 3}
+      propertyPath: ManEaterSpawnFrequency
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8211112004894342079, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}
       propertyPath: m_Name
