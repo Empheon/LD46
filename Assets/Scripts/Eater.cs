@@ -8,6 +8,7 @@ public class Eater : MonoBehaviour
     public float ExplusionSpeed = 10;
     public float Torque = 60;
     public SpriteRenderer MonsterSprite;
+    public GameObject Shadow;
     
     virtual public void Die(Vector3 playerPosition)
     {
@@ -17,5 +18,6 @@ public class Eater : MonoBehaviour
         rigidbody.AddTorque(Torque);
         GetComponent<CapsuleCollider2D>().enabled = false;
         Speed = 0;
+        Shadow.SetActive(false);
     }
 }

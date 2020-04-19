@@ -8,30 +8,40 @@ public class TerrierSpawner : MonoBehaviour
 {
     public GameObject CoalBall;
     public float SpawnFrequency = 1000;
+    public SpriteRenderer Glow;
+    public float GlowDuration = .5f;
 
-    private TerrierState m_state;
+    public TerrierState Status;
     private float m_counter;
 
     private static Queue<GameObject> m_ballPool;
     private Animator m_animator;
+    private Color m_glowColor;
+    private readonly static Color m_transparent = new Color(0, 0, 0, 0);
+
+    public static List<TerrierSpawner> AwokeTerriers;
 
     // Start is called before the first frame update
     void Start()
     {
+        AwokeTerriers = new List<TerrierSpawner>();
         m_animator = GetComponent<Animator>();
         if (m_ballPool == null)
         {
             m_ballPool = new Queue<GameObject>();
         }
         m_ballPool.Clear(); // Because of fast play mode, doesn't reload static vars
-        m_state = TerrierState.SLEEPING;
+        Status = TerrierState.SLEEPING;
         m_counter = SpawnFrequency;
+
+        m_glowColor = Glow.color;
+        Glow.color = m_transparent;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (m_state)
+        switch (Status)
         {
             case TerrierState.AWAKE:
                 if (m_counter < SpawnFrequency)
@@ -50,7 +60,8 @@ public class TerrierSpawner : MonoBehaviour
 
     public void Awaken()
     {
-        m_state = TerrierState.AWAKE;
+        Status = TerrierState.AWAKE;
+        StartCoroutine(GlowOn());
         if (WorldGenerator.Instance.PlayerInstance.transform.position.x < transform.position.x)
         {
             m_animator.SetTrigger("Left");
@@ -58,11 +69,44 @@ public class TerrierSpawner : MonoBehaviour
         {
             m_animator.SetTrigger("Right");
         }
+        AwokeTerriers.Add(this);
     }
 
     public void PutToSleep()
     {
-        m_state = TerrierState.SLEEPING;
+        Status = TerrierState.SLEEPING;
+        StartCoroutine(GlowOff());
+        AwokeTerriers.Remove(this);
+    }
+
+    private IEnumerator GlowOn()
+    {
+        float d = 0;
+        while (d < GlowDuration)
+        {
+            d += Time.deltaTime;
+            var r = Mathf.Lerp(0, m_glowColor.r, d / GlowDuration);
+            var g = Mathf.Lerp(0, m_glowColor.g, d / GlowDuration);
+            var b = Mathf.Lerp(0, m_glowColor.b, d / GlowDuration);
+            var a = Mathf.Lerp(0, m_glowColor.a, d / GlowDuration);
+            Glow.color = new Color(r, g, b, a);
+            yield return null;
+        }
+    }
+
+    private IEnumerator GlowOff()
+    {
+        float d = 0;
+        while (d < GlowDuration)
+        {
+            d += Time.deltaTime;
+            var r = Mathf.Lerp(m_glowColor.r, 0, d / GlowDuration);
+            var g = Mathf.Lerp(m_glowColor.g, 0, d / GlowDuration);
+            var b = Mathf.Lerp(m_glowColor.b, 0, d / GlowDuration);
+            var a = Mathf.Lerp(m_glowColor.a, 0, d / GlowDuration);
+            Glow.color = new Color(r, g, b, a);
+            yield return null;
+        }
     }
 
     private void NewBallAt(Vector3 pos)
