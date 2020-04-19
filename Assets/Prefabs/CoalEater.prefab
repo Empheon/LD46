@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c718e8c9fa64343bdaf780d64caa21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 7
   ExplusionSpeed: 40
   Torque: 600
   MonsterSprite: {fileID: 4502428089071471267}
