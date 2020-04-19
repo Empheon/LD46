@@ -1550,11 +1550,6 @@ PrefabInstance:
       propertyPath: PlayerInstance
       value: 
       objectReference: {fileID: 1191112186}
-    - target: {fileID: 8211112004894342078, guid: 32cb373782512a145a0df88710017ab5,
-        type: 3}
-      propertyPath: ManEaterSpawnFrequency
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8211112004894342079, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}
       propertyPath: m_Name

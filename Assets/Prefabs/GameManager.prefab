@@ -106,9 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Terrier: {fileID: 5317020298062508760, guid: 2a6b7f7dab1462b46a745b278fbda9ed, type: 3}
   PlayerInstance: {fileID: 0}
-  TerrierNumber: 20
-  CoalEaterSpawnFrequency: 5
-  ManEaterSpawnFrequency: 10
+  TerrierNumber: 15
+  CoalEaterSpawnFrequency: 3.5
+  ManEaterSpawnFrequency: 5
   EatableCoalList: []
   CoalEater: {fileID: 8554614013094629109, guid: e4193ec8ead3d5b47b92bafafd0825a0,
     type: 3}

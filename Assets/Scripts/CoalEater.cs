@@ -8,7 +8,7 @@ public class CoalEater : Eater
 
     private float m_refocusFrequency = 1;
     private float m_timerRefocus;
-    private float m_shutdownTerrierFrequency = 8;
+    public float m_shutdownTerrierFrequency = 6;
     private float m_timerShutdown;
     private bool m_isDying = false;
 

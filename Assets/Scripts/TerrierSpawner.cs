@@ -140,4 +140,23 @@ public class TerrierSpawner : MonoBehaviour
         gO.SetActive(false);
         m_ballPool.Enqueue(gO);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("LightFire"))
+        {
+            AwokeTerriers.Remove(this);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("LightFire"))
+        {
+            if (!AwokeTerriers.Contains(this))
+            {
+                AwokeTerriers.Add(this);
+            }
+        }
+    }
 }

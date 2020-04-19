@@ -248,10 +248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shadow: {fileID: 3483906580701454714}
   MainSprite: {fileID: 4502428089071471267}
-  Speed: 7
+  Speed: 10
   ExplusionSpeed: 40
   Torque: 600
   MonsterSprite: {fileID: 4502428089071471267}
+  m_shutdownTerrierFrequency: 8
 --- !u!50 &-5278299926403235138
 Rigidbody2D:
   serializedVersion: 4
