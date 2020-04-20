@@ -2293,7 +2293,7 @@ PrefabInstance:
     - target: {fileID: 8211112004894342078, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}
       propertyPath: DayTime
-      value: 3
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8211112004894342079, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}
