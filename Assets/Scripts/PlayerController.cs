@@ -85,7 +85,14 @@ public class PlayerController : MovingThing
         if (Input.GetButtonDown("Kick") && CollidingTerrier.Count > 0)
         {
             int chooseAudio = Random.Range(0, listKTSound.Count);
-            kickTerrierAudio.PlayOneShot(listKTSound[chooseAudio], 0.8F);
+            foreach (var ct in CollidingTerrier)
+            {
+                if (ct.Status == TerrierState.SLEEPING)
+                {
+                    kickTerrierAudio.PlayOneShot(listKTSound[chooseAudio], 0.8F);
+                    break;
+                }
+            }
             CollidingTerrier.ForEach(x => x.Awaken());
             m_playerAnimator.SetTrigger("Kick");
         }
