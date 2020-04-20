@@ -45,7 +45,17 @@ public class TerrainGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AllTerrainObjects = new List<GameObject>()
+       
+
+        
+        
+    }
+
+    public void CreateTerrain(float m_boundX, float m_boundY){
+        this.m_boundX = m_boundX;
+        this.m_boundY = m_boundX;
+        
+         this.AllTerrainObjects = new List<GameObject>()
         {Bush1, Bush2, Bush3,
         Stone1, Stone2, Stone3, Stone4,
         Leaf1, Leaf2, Leaf3, Leaf4, Leaf5, Leaf6,
@@ -54,16 +64,14 @@ public class TerrainGenerator : MonoBehaviour
         Reed,
         Tree1, Tree2, Tree3, Tree4, Tree5, Tree6,
         Trunk0, Trunk1, Trunk2};
-        
-    }
 
-    public void CreateTerrain(float m_boundX, float m_boundY){
-        this.m_boundX = m_boundX;
-        this.m_boundY = m_boundX;
+
+        
         for(int i = 0 ; i < NumberTerrainObjects ; i++){
             int chosenObject = Random.Range(0, AllTerrainObjects.Count);
             Instantiate(AllTerrainObjects[chosenObject], new Vector3(Random.Range(-m_boundX, m_boundX), Random.Range(-m_boundY, m_boundY), 0), Quaternion.identity, transform);
         }
+        
     }
 
     // Update is called once per frame
