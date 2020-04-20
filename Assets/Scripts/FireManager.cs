@@ -36,7 +36,7 @@ public class FireManager : MonoBehaviour
         SetFireVolume();
         if (transform.localScale.x < GameOverThreshold)
         {
-            Debug.Log("Game over");
+            WorldGenerator.Instance.LooseGame();
         }
     }
 

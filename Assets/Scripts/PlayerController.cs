@@ -65,10 +65,6 @@ public class PlayerController : MovingThing
     // Update is called once per frame
     void Update()
     {
-        if (HitPoints <= 0)
-        {
-            Debug.Log("Game over no health");
-        }
         var hAxis = Input.GetAxis("Horizontal");
         var vAxis = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(hAxis, vAxis, 0) * Time.deltaTime * Speed);
@@ -121,6 +117,10 @@ public class PlayerController : MovingThing
             m_isInvincible = true;
             StartCoroutine(Blink());
             lifeBar.LoseHP();
+        }
+        if (HitPoints <= 0)
+        {
+            WorldGenerator.Instance.LooseGame();
         }
     }
 

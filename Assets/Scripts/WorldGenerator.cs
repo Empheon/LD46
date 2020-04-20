@@ -40,8 +40,12 @@ public class WorldGenerator : MonoBehaviour
     private readonly static float m_wallsDispertion = 28;
     public int NumberOfWallTrees = 600;
 
+    public GameObject VictoryScreen;
+    public GameObject DefeatScreen;
+
     private void Awake()
     {
+        Time.timeScale = 1;
         if (Instance == null)
         {
             Instance = this;
@@ -102,6 +106,10 @@ public class WorldGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_dayTimer > DayTime)
+        {
+            WinGame();
+        }
         // Day management
         m_dayTimer += Time.deltaTime;
         if (m_dayTimer > m_nextStep && m_moonIdx < 5)
@@ -109,7 +117,6 @@ public class WorldGenerator : MonoBehaviour
             Moons[m_moonIdx].GetComponent<Image>().sprite = SunSprite;
             m_nextStep += m_dayStep;
             m_moonIdx++;
-            Debug.Log("Win");
         }
 
         // Spawn CoalEater
@@ -197,5 +204,17 @@ public class WorldGenerator : MonoBehaviour
             Instantiate(obj, pos, Quaternion.identity, transform);
         }
         return terriers;
+    }
+
+    public void WinGame()
+    {
+        Time.timeScale = 0;
+        VictoryScreen.SetActive(true);
+    }
+
+    public void LooseGame()
+    {
+        Time.timeScale = 0;
+        DefeatScreen.SetActive(true);
     }
 }

@@ -46,4 +46,9 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("Main");
+    }
 }
