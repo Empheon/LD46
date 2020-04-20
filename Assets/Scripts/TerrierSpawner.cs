@@ -36,8 +36,6 @@ public class TerrierSpawner : MonoBehaviour
 
         m_glowColor = Glow.color;
         Glow.color = m_transparent;
-
-        GetComponent<SpriteRenderer>().sortingOrder = (int)-(transform.position.y * 100);
     }
 
     // Update is called once per frame

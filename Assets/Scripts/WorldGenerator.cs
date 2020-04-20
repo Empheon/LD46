@@ -14,13 +14,17 @@ public class WorldGenerator : MonoBehaviour
     public GameObject CoalEater;
     public GameObject ManEater;
 
-    private const float m_boundX = 80-10;
-    private const float m_boundY = 60-10;
+    private const float m_boundX = 80 - 10;
+    private const float m_boundY = 60 - 10;
     private const float m_boundAroundFire = 15;
     private float m_coalEaterTimer;
     private float m_manEaterTimer;
 
     public static WorldGenerator Instance;
+
+    public List<GameObject> HittableDecorations;
+    public List<Sprite> Decorations;
+    public GameObject TerrainTemplate;
 
     private void Awake()
     {
@@ -35,38 +39,22 @@ public class WorldGenerator : MonoBehaviour
     {
         EatableCoalList = new List<GameObject>();
 
-        var squaredFireBound = m_boundAroundFire * m_boundAroundFire * m_boundAroundFire * m_boundAroundFire;
-        var terriers = new List<Vector3>();
-        var pos = Vector3.zero;
-        bool isValid;
-        float x, y;
-        for (int i = 0; i < TerrierNumber; i++)
+        
+
+        var positions = GenerateStuff(Terrier, 100, TerrierNumber);
+        foreach (var h in HittableDecorations)
         {
-            isValid = false;
-            while (!isValid)
-            {
-                isValid = true;
-                x = Random.Range(-m_boundX, m_boundX);
-                y = Random.Range(-m_boundY, m_boundY);
+            h.transform.localScale = Vector3.one * 3;
+            positions = GenerateStuff(h, 20, 2, positions);
+        }
 
-                while (x * x * y * y < squaredFireBound)
-                {
-                    x = Random.Range(-m_boundX, m_boundX);
-                    y = Random.Range(-m_boundY, m_boundY);
-                }
-
-                pos = new Vector3(x, y, 0);
-
-                foreach (var v in terriers)
-                {
-                    if ((v - pos).sqrMagnitude < 100)
-                    {
-                        isValid = false;
-                    }
-                }
-            }
-            terriers.Add(pos);
-            Instantiate(Terrier, pos, Quaternion.identity, transform);
+        SpriteRenderer sr = TerrainTemplate.GetComponent<SpriteRenderer>();
+        TerrainTemplate.transform.localScale = Vector3.one * 1.5f;
+        foreach (var d in Decorations)
+        {
+            sr.sprite = d;
+            positions = GenerateStuff(TerrainTemplate, 2, 10, positions);
+            sr.sortingOrder = -32700;
         }
     }
 
@@ -74,13 +62,13 @@ public class WorldGenerator : MonoBehaviour
     void Update()
     {
         // Spawn CoalEater
-        if (m_coalEaterTimer < CoalEaterSpawnFrequency + Random.Range(-1f,3f))
+        if (m_coalEaterTimer < CoalEaterSpawnFrequency + Random.Range(-1f, 3f))
         {
             m_coalEaterTimer += Time.deltaTime;
         } else if (EatableCoalList.Count != 0)
         {
             m_coalEaterTimer = 0;
-            
+
             Instantiate(CoalEater, GeneratePosition(), Quaternion.identity);
         }
 
@@ -109,5 +97,51 @@ public class WorldGenerator : MonoBehaviour
             x = Random.Range(-m_boundX - 20, m_boundX + 20);
         }
         return new Vector3(x, y, 0);
+    }
+
+    private List<Vector3> GenerateStuff(GameObject obj, float interDistance, int numberOfObjects, List<Vector3> positions = null)
+    {
+        var squaredFireBound = m_boundAroundFire * m_boundAroundFire;
+        List<Vector3> terriers;
+        if (positions == null)
+        {
+            terriers = new List<Vector3>();
+        } else
+        {
+            terriers = positions;
+        }
+        var pos = Vector3.zero;
+        bool isValid;
+        float x, y;
+        for (int i = 0; i < numberOfObjects; i++)
+        {
+            isValid = false;
+            while (!isValid)
+            {
+                isValid = true;
+                x = Random.Range(-m_boundX, m_boundX);
+                y = Random.Range(-m_boundY, m_boundY);
+
+                while (new Vector2(x, y).sqrMagnitude < squaredFireBound)
+                {
+                    x = Random.Range(-m_boundX, m_boundX);
+                    y = Random.Range(-m_boundY, m_boundY);
+                }
+
+                pos = new Vector3(x, y, 0);
+
+                foreach (var v in terriers)
+                {
+                    if ((v - pos).sqrMagnitude < interDistance)
+                    {
+                        isValid = false;
+                    }
+                }
+            }
+            terriers.Add(pos);
+            obj.GetComponent<SpriteRenderer>().sortingOrder = (int)-(pos.y * 100);
+            Instantiate(obj, pos, Quaternion.identity, transform);
+        }
+        return terriers;
     }
 }

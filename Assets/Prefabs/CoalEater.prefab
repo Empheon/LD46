@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shadow: {fileID: 3483906580701454714}
   MainSprite: {fileID: 4502428089071471267}
-  Speed: 10
+  Speed: 7
   ExplusionSpeed: 40
   Torque: 600
   MonsterSprite: {fileID: 4502428089071471267}
