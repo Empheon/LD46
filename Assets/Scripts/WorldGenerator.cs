@@ -64,11 +64,11 @@ public class WorldGenerator : MonoBehaviour
 
         SpriteRenderer sr = TerrainTemplate.GetComponent<SpriteRenderer>();
         TerrainTemplate.transform.localScale = Vector3.one * 2.5f;
+        sr.sortingOrder = -32700;
         foreach (var d in Decorations)
         {
             sr.sprite = d;
-            positions = GenerateStuff(TerrainTemplate, 10, 4, positions);
-            sr.sortingOrder = -32700;
+            positions = GenerateStuff(TerrainTemplate, 10, 4, positions, false);
         }
 
         // Walls
@@ -150,7 +150,7 @@ public class WorldGenerator : MonoBehaviour
         return new Vector3(x, y, 0);
     }
 
-    private List<Vector3> GenerateStuff(GameObject obj, float interDistance, int numberOfObjects, List<Vector3> positions = null)
+    private List<Vector3> GenerateStuff(GameObject obj, float interDistance, int numberOfObjects, List<Vector3> positions = null, bool setOrder = true)
     {
         var squaredFireBound = m_boundAroundFire * m_boundAroundFire;
         List<Vector3> terriers;
@@ -190,7 +190,10 @@ public class WorldGenerator : MonoBehaviour
                 }
             }
             terriers.Add(pos);
-            obj.GetComponent<SpriteRenderer>().sortingOrder = (int)-(pos.y * 100);
+            if (setOrder)
+            {
+                obj.GetComponent<SpriteRenderer>().sortingOrder = (int)-(pos.y * 100);
+            }
             Instantiate(obj, pos, Quaternion.identity, transform);
         }
         return terriers;

@@ -40,7 +40,6 @@ public class PlayerController : MovingThing
     public AudioClip PSound4;
     private List<AudioClip> listPSound;
 
-
     public LifeBarManager lifeBar;
 
     private readonly static Color m_blinkColor = new Color(1, .27f, .27f);
