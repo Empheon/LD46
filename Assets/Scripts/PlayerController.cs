@@ -18,6 +18,14 @@ public class PlayerController : MovingThing
     private bool m_isInvincible = false;
     private float m_blinkSpeed = .1f;
 
+    private AudioSource humanEaterAudio;
+    public AudioClip HESound1;
+    public AudioClip HESound2;
+    public AudioClip HESound3;
+    public AudioClip HESound4;
+    private List<AudioClip> listHESound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +35,8 @@ public class PlayerController : MovingThing
         m_kickColliderX = 2.20f;
         m_playerSprite = AnimatedObject.GetComponent<SpriteRenderer>();
         m_playerAnimator = AnimatedObject.GetComponent<Animator>();
+        humanEaterAudio = GetComponent<AudioSource>();
+        listHESound = new List<AudioClip>(){HESound1, HESound2, HESound3, HESound4};
     }
 
     // Update is called once per frame
@@ -73,7 +83,9 @@ public class PlayerController : MovingThing
     public void LooseHP(int hp = 1)
     {
         if (!m_isInvincible)
-        {
+        {   
+            int chooseAudio = Random.Range(0, listHESound.Count);
+            humanEaterAudio.PlayOneShot(listHESound[chooseAudio], 1.0F);
             HitPoints -= hp;
             m_isInvincible = true;
             StartCoroutine(Blink());
@@ -90,5 +102,10 @@ public class PlayerController : MovingThing
             yield return new WaitForSeconds(m_blinkSpeed);
         }
         m_isInvincible = false;
+    }
+
+
+    public Vector3 GetPosition(){
+        return transform.position;
     }
 }

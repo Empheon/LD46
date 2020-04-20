@@ -19,7 +19,10 @@ public class WorldGenerator : MonoBehaviour
     private float m_coalEaterTimer;
     private float m_manEaterTimer;
 
+    public TerrainGenerator terrainGenerator;
+
     public static WorldGenerator Instance;
+
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class WorldGenerator : MonoBehaviour
         {
             Instantiate(Terrier, new Vector3(Random.Range(-m_boundX, m_boundX), Random.Range(-m_boundY, m_boundY), 0), Quaternion.identity, transform);
         }
+
+        terrainGenerator.CreateTerrain(m_boundX, m_boundY);
     }
 
     // Update is called once per frame

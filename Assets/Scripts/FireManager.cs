@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public class FireManager : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class FireManager : MonoBehaviour
     public float MaxSize = 1.5f;
 
     public static GameObject GOInstance;
+    
+    public AudioMixer fireAudio;
+    public PlayerController player;
 
     private void Awake()
     {
@@ -27,7 +32,8 @@ public class FireManager : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+        SetFireVolume();
         if (transform.localScale.x < GameOverThreshold)
         {
             Debug.Log("Game over");
@@ -52,5 +58,13 @@ public class FireManager : MonoBehaviour
 
     public float GetFireSize(){
         return transform.localScale.x / MaxSize;
+    }
+
+    private void SetFireVolume(){
+        float distanceToMaxRadius = Vector3.Distance(transform.position, player.GetPosition()) - transform.localScale.x;
+        float maxDist = 40.0f;
+        float minDist = 9.0f;
+        float linearVol = (1.0f - 0.0001f) / (minDist - maxDist) * distanceToMaxRadius + (1 - minDist*(1.0f - 0.0001f) / (minDist - maxDist));
+        fireAudio.SetFloat("fireVol", Mathf.Log10(linearVol)*20.0f);
     }
 }
