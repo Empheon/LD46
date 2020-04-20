@@ -202,9 +202,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrowFactor: 0.01
-  ReduceFactor: 0.0012
+  ReduceFactor: 0.001
   GameOverThreshold: 0.08
   MaxSize: 1.5
+  fireAudio: {fileID: 0}
+  player: {fileID: 0}
 --- !u!50 &-5613928240444974030
 Rigidbody2D:
   serializedVersion: 4
