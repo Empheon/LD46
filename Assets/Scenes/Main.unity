@@ -350,6 +350,54 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &582795420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582795422}
+  - component: {fileID: 582795421}
+  m_Layer: 0
+  m_Name: LifeBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &582795421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582795420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61350fd49486bd459a5305100136a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartFull: {fileID: 221988819854264278, guid: 6b021378588c1d449b3d79d8a99f135b,
+    type: 3}
+  heartEmpty: {fileID: 8336459277640819873, guid: 6251a7539b7ba5645b61eca4c6bf4582,
+    type: 3}
+  mainCamera: {fileID: 488403904}
+--- !u!4 &582795422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582795420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.827723, y: -10.794485, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709396936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1100,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1671,6 +1719,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: 053cfddc6ecc62842acd89af8cfebf6b,
         type: 2}
+    - target: {fileID: 2819738278041125707, guid: e7a53befeb29459478dea1a84a8032a2,
+        type: 3}
+      propertyPath: MaxSize
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819738278041125707, guid: e7a53befeb29459478dea1a84a8032a2,
+        type: 3}
+      propertyPath: GrowFactor
+      value: 0.015
+      objectReference: {fileID: 0}
     - target: {fileID: 2819738278041125749, guid: e7a53befeb29459478dea1a84a8032a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1750,6 +1808,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1531876794, guid: 4e1ad6f9c6d3af44cbd349c93d881b08, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
         type: 3}
       propertyPath: HESound1
@@ -1770,6 +1832,51 @@ PrefabInstance:
       propertyPath: HESound4
       value: 
       objectReference: {fileID: 8300000, guid: 36a4520261314974a8ad329e1379c9d4, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: lifeBar
+      value: 
+      objectReference: {fileID: 582795421}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: KickTSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fc81fc056fc16f47b110ca29ab1f214, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: KickTSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ed10e256a06e514082fc502c9eb0263, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: KickTSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: dd46a8c2fb90e9b4c9bb54dbe33dbfa8, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: KickTSound4
+      value: 
+      objectReference: {fileID: 8300000, guid: 80efbe742d72f1f4496f6725c772dfb0, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: PSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 4dbb2a608ddf30f4ea6fe3be9157dfba, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: PSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: ed4e53af8cf4f3d409cc7d3b36955f18, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: PSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: 97f3c89bb54f31442aaf42e50fdfb68b, type: 3}
+    - target: {fileID: 295557261844326890, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
+        type: 3}
+      propertyPath: PSound4
+      value: 
+      objectReference: {fileID: 8300000, guid: ab442022f606ed94694a02d782072dfb, type: 3}
     - target: {fileID: 918161092123829189, guid: 4e1ad6f9c6d3af44cbd349c93d881b08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1904,6 +2011,16 @@ PrefabInstance:
       propertyPath: terrainGenerator
       value: 
       objectReference: {fileID: 1121135533}
+    - target: {fileID: 8211112004894342078, guid: 32cb373782512a145a0df88710017ab5,
+        type: 3}
+      propertyPath: CoalEaterSpawnFrequency
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211112004894342078, guid: 32cb373782512a145a0df88710017ab5,
+        type: 3}
+      propertyPath: ManEaterSpawnFrequency
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8211112004894342079, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}
       propertyPath: m_Name

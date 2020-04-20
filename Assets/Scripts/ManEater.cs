@@ -35,6 +35,7 @@ public class ManEater : Eater
         var pc = collision.gameObject.GetComponent<PlayerController>();
         if (pc != null)
         {
+            
             pc.LooseHP();
         }
     }

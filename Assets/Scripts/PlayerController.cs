@@ -24,7 +24,24 @@ public class PlayerController : MovingThing
     public AudioClip HESound3;
     public AudioClip HESound4;
     private List<AudioClip> listHESound;
+    
+    private AudioSource kickTerrierAudio;
+    public AudioClip KickTSound1;
+    public AudioClip KickTSound2;
+    public AudioClip KickTSound3;
+    public AudioClip KickTSound4;
+    private List<AudioClip> listKTSound;
 
+
+    private AudioSource punchAudio;
+    public AudioClip PSound1;
+    public AudioClip PSound2;
+    public AudioClip PSound3;
+    public AudioClip PSound4;
+    private List<AudioClip> listPSound;
+
+
+    public LifeBarManager lifeBar;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +54,12 @@ public class PlayerController : MovingThing
         m_playerAnimator = AnimatedObject.GetComponent<Animator>();
         humanEaterAudio = GetComponent<AudioSource>();
         listHESound = new List<AudioClip>(){HESound1, HESound2, HESound3, HESound4};
+        kickTerrierAudio = GetComponent<AudioSource>();
+        listKTSound = new List<AudioClip>(){KickTSound1, KickTSound2, KickTSound3, KickTSound4};
+        punchAudio = GetComponent<AudioSource>();
+        listPSound = new List<AudioClip>(){PSound1, PSound2, PSound3, PSound4};
+        lifeBar.createBarLife(HitPoints);
+
     }
 
     // Update is called once per frame
@@ -65,12 +88,16 @@ public class PlayerController : MovingThing
 
         if (Input.GetButtonDown("Kick") && CollidingTerrier.Count > 0)
         {
+            int chooseAudio = Random.Range(0, listKTSound.Count);
+            kickTerrierAudio.PlayOneShot(listKTSound[chooseAudio], 0.8F);
             CollidingTerrier.ForEach(x => x.Awaken());
             m_playerAnimator.SetTrigger("Kick");
         }
 
         if (Input.GetButtonDown("Kick") && CollidingEater.Count > 0)
         {
+            int chooseAudio = Random.Range(0, listPSound.Count);
+            punchAudio.PlayOneShot(listPSound[chooseAudio], 0.1F);
             m_playerAnimator.SetTrigger("Punch");
             CollidingEater.ForEach(x => x.Die(transform.position));
             CollidingEater.Clear();
