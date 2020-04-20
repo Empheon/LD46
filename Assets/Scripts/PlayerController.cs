@@ -60,7 +60,6 @@ public class PlayerController : MovingThing
         listKTSound = new List<AudioClip>(){KickTSound1, KickTSound2, KickTSound3, KickTSound4};
         punchAudio = GetComponent<AudioSource>();
         listPSound = new List<AudioClip>(){PSound1, PSound2, PSound3, PSound4};
-        //lifeBar.createBarLife(HitPoints);
 
     }
 
@@ -122,6 +121,7 @@ public class PlayerController : MovingThing
             HitPoints -= hp;
             m_isInvincible = true;
             StartCoroutine(Blink());
+            lifeBar.LoseHP();
         }
     }
 

@@ -1,37 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeBarManager : MonoBehaviour
 {
 
-    public GameObject heartFull;
-    public GameObject heartEmpty;
-    private List<GameObject> hearts;
+    public Sprite heartFull;
+    public Sprite heartEmpty;
+    public Image[] hearts;
 
-    public Transform mainCamera;
-    private int health;
+    private int currentHP = 3;
+
+    private float m_blinkSpeed = .1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
-    public void createBarLife(int health){
-        this.health = health;
-        hearts = new List<GameObject>();
-
-        for(int i = 0 ; i < health ; i++){
-            hearts.Add(Instantiate(heartFull, mainCamera.position + new Vector3(23 + i*2, 13, 10), Quaternion.identity, transform));
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0 ; i < health ; i++){
-            hearts[i].transform.position = mainCamera.position + new Vector3(23 + i*2, 13, 10);
+
+    }
+
+    public void LoseHP(){
+        
+        if(currentHP > 0){
+            currentHP--;
+            hearts[currentHP].sprite = heartEmpty;
+            StartCoroutine(Blink(hearts[currentHP]));
+        }
+    }
+
+    IEnumerator Blink(Image currentHeart)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            currentHeart.color = new Color(1, .27f, .27f);
+            yield return new WaitForSeconds(m_blinkSpeed);
+            currentHeart.color = Color.white;
+            yield return new WaitForSeconds(m_blinkSpeed);
         }
     }
 }
+
+
