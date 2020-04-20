@@ -36,8 +36,6 @@ public class TerrierSpawner : MonoBehaviour
 
         m_glowColor = Glow.color;
         Glow.color = m_transparent;
-
-        GetComponent<SpriteRenderer>().sortingOrder = (int)-(transform.position.y * 100);
     }
 
     // Update is called once per frame
@@ -139,5 +137,24 @@ public class TerrierSpawner : MonoBehaviour
     {
         gO.SetActive(false);
         m_ballPool.Enqueue(gO);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("LightFire"))
+        {
+            AwokeTerriers.Remove(this);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("LightFire"))
+        {
+            if (!AwokeTerriers.Contains(this))
+            {
+                AwokeTerriers.Add(this);
+            }
+        }
     }
 }

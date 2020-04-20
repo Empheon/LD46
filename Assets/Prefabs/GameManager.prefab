@@ -106,13 +106,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Terrier: {fileID: 5317020298062508760, guid: 2a6b7f7dab1462b46a745b278fbda9ed, type: 3}
   PlayerInstance: {fileID: 0}
-  TerrierNumber: 20
-  CoalEaterSpawnFrequency: 5
-  ManEaterSpawnFrequency: 10
+  TerrierNumber: 15
+  CoalEaterSpawnFrequency: 3.5
+  ManEaterSpawnFrequency: 5
   EatableCoalList: []
   CoalEater: {fileID: 8554614013094629109, guid: e4193ec8ead3d5b47b92bafafd0825a0,
     type: 3}
   ManEater: {fileID: 2421908219657376757, guid: 140759f71b919aa46bd08f336a4ec776,
+    type: 3}
+  HittableDecorations:
+  - {fileID: 6920476877218063320, guid: 85bc27f6f2dc17c4d87a06950f712e01, type: 3}
+  - {fileID: 1316151856348279864, guid: 86074ad4fbca81847a1aedb8382dca01, type: 3}
+  - {fileID: 3432401281309018359, guid: cd953a1d09f7a494a86d3b31c4b42502, type: 3}
+  - {fileID: 7167358810651986238, guid: 18ec364ba988b6247bd2e22f1b1b1bf6, type: 3}
+  - {fileID: 5131423758863067088, guid: be8adf7d120a346438a130c413d2e086, type: 3}
+  - {fileID: 3250904118083319096, guid: c4a5f748bb74b4f4491a7d395f47d358, type: 3}
+  Decorations:
+  - {fileID: 21300000, guid: 3b4afbf452c5cf64c91ee65e36543c7c, type: 3}
+  - {fileID: 21300000, guid: bb514dfbf91120747aa4867cdd9983e3, type: 3}
+  - {fileID: 21300000, guid: fe5f2aa89220e6e4b9027dbd41d2d2cf, type: 3}
+  - {fileID: 21300000, guid: 133aea57f82171a409b0407ad969d931, type: 3}
+  - {fileID: 21300000, guid: f6934064ca83a0c45823318f350cefee, type: 3}
+  - {fileID: 21300000, guid: 1c7821ba31a60114bb58ed6f5b4a0436, type: 3}
+  - {fileID: 21300000, guid: 88da8bc9201f9ca4eb75d4c836167e38, type: 3}
+  - {fileID: 21300000, guid: bc75f5f97ac0c064c9334a1c0a912fd8, type: 3}
+  - {fileID: 21300000, guid: 1f8a3e6dcf3379e478ca8c0cc1b7cca2, type: 3}
+  - {fileID: 21300000, guid: fec181e8fe197a241b40a7b75551723d, type: 3}
+  - {fileID: 21300000, guid: e988a4f7b4e4d104d9fc78a03dd001a6, type: 3}
+  - {fileID: 21300000, guid: 2791328692da5d44f811174627467e1f, type: 3}
+  - {fileID: 21300000, guid: 89690b546036af64a8df4afcf8241890, type: 3}
+  - {fileID: 21300000, guid: 68954cd46bcd95e44bb2239f0bcb7dce, type: 3}
+  - {fileID: 21300000, guid: b9d68e667249a4242a8d665063806266, type: 3}
+  - {fileID: 21300000, guid: e9ee3b7d18caf22478f9892bbbacf63b, type: 3}
+  - {fileID: 21300000, guid: f3c42ecb3fa775943a052a4487666485, type: 3}
+  TerrainTemplate: {fileID: 3795740130856513854, guid: 49bdd64451f783549acd988952b5c778,
     type: 3}
 --- !u!1 &8211112005210348253
 GameObject:

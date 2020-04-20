@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Firelight
+    uniqueID: 3673620695
+    locked: 0
