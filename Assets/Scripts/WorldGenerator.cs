@@ -47,15 +47,15 @@ public class WorldGenerator : MonoBehaviour
         foreach (var h in HittableDecorations)
         {
             h.transform.localScale = Vector3.one * 3;
-            positions = GenerateStuff(h, 20, 2, positions);
+            positions = GenerateStuff(h, 40, 2, positions);
         }
 
         SpriteRenderer sr = TerrainTemplate.GetComponent<SpriteRenderer>();
-        TerrainTemplate.transform.localScale = Vector3.one * 2f;
+        TerrainTemplate.transform.localScale = Vector3.one * 2.5f;
         foreach (var d in Decorations)
         {
             sr.sprite = d;
-            positions = GenerateStuff(TerrainTemplate, 2, 4, positions);
+            positions = GenerateStuff(TerrainTemplate, 10, 4, positions);
             sr.sortingOrder = -32700;
         }
 

@@ -17,7 +17,7 @@ public class TerrierSpawner : MonoBehaviour
     private static Queue<GameObject> m_ballPool;
     private Animator m_animator;
     private Color m_glowColor;
-    private readonly static Color m_transparent = new Color(0, 0, 0, 0);
+    private static Color m_transparent;
 
     public static List<TerrierSpawner> AwokeTerriers;
 
@@ -35,6 +35,7 @@ public class TerrierSpawner : MonoBehaviour
         m_counter = SpawnFrequency;
 
         m_glowColor = Glow.color;
+        m_transparent = new Color(m_glowColor.r, m_glowColor.g, m_glowColor.b, 0.2f);
         Glow.color = m_transparent;
     }
 
