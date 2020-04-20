@@ -91,8 +91,10 @@ public class CoalEater : Eater
             m_timerShutdown += Time.deltaTime;
         }
 
-
-        MoveTowardFocusObject();
+        if (m_currentFocusObject != null)
+        {
+            MoveTowardFocusObject();
+        }
     }
 
     private GameObject FindClosestTerrier()

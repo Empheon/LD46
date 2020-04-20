@@ -43,6 +43,8 @@ public class PlayerController : MovingThing
 
     public LifeBarManager lifeBar;
 
+    private readonly static Color m_blinkColor = new Color(1, .27f, .27f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +101,11 @@ public class PlayerController : MovingThing
             int chooseAudio = Random.Range(0, listPSound.Count);
             punchAudio.PlayOneShot(listPSound[chooseAudio], 0.1F);
             m_playerAnimator.SetTrigger("Punch");
-            CollidingEater.ForEach(x => x.Die(transform.position));
+            Eater[] eatersCopy = CollidingEater.ToArray();
+            for (int i = 0; i < eatersCopy.Length; i++)
+            {
+                eatersCopy[i].Die(transform.position);
+            }
             CollidingEater.Clear();
         } else if (Input.GetButtonDown("Kick"))
         {
@@ -123,7 +129,7 @@ public class PlayerController : MovingThing
     {
         for (int i = 0; i < 8; i++)
         {
-            m_playerSprite.color = new Color(1, .27f, .27f);
+            m_playerSprite.color = m_blinkColor;
             yield return new WaitForSeconds(m_blinkSpeed);
             m_playerSprite.color = Color.white;
             yield return new WaitForSeconds(m_blinkSpeed);
