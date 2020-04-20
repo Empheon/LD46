@@ -17,23 +17,19 @@ public class LifeBarManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(currentHP);
-        Debug.Log(hearts.Length);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentHP);
-        Debug.Log(hearts.Length);
+
     }
 
     public void LoseHP(){
         
         if(currentHP > 0){
             currentHP--;
-            Debug.Log(currentHP);
-            Debug.Log(hearts.Length);
             hearts[currentHP].sprite = heartEmpty;
             StartCoroutine(Blink(hearts[currentHP]));
         }
