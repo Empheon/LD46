@@ -2070,6 +2070,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Defeat
       objectReference: {fileID: 0}
+    - target: {fileID: 5561216984770474097, guid: 2fbea790c7352994f9cae60120614fbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5561216984770474109, guid: 2fbea790c7352994f9cae60120614fbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2288,7 +2293,7 @@ PrefabInstance:
     - target: {fileID: 8211112004894342078, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}
       propertyPath: DayTime
-      value: 120
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8211112004894342079, guid: 32cb373782512a145a0df88710017ab5,
         type: 3}

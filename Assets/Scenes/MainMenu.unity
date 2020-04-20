@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 841247931}
   - component: {fileID: 841247930}
   - component: {fileID: 841247929}
+  - component: {fileID: 841247932}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -401,6 +402,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841247927}
   m_CullTransparentMesh: 0
+--- !u!114 &841247932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841247927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2468811ba80044380e691e9c120c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonSprites:
+  - {fileID: 21300000, guid: d618409aa856b5742a469a4a59493081, type: 3}
+  - {fileID: 21300000, guid: 970380aa694c0c8459db59e79b1a650c, type: 3}
+  - {fileID: 21300000, guid: f3a0e166dd92ae545833b71d4ba81b45, type: 3}
+  - {fileID: 21300000, guid: 010dcc1aeec49b848a5db89fee4ad156, type: 3}
 --- !u!1 &965653494
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +885,7 @@ GameObject:
   - component: {fileID: 1633521639}
   - component: {fileID: 1633521638}
   - component: {fileID: 1633521637}
+  - component: {fileID: 1633521640}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -966,7 +985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b932fd20e5818d42941b1ae27c57920, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d618409aa856b5742a469a4a59493081, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -984,6 +1003,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633521635}
   m_CullTransparentMesh: 0
+--- !u!114 &1633521640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633521635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2468811ba80044380e691e9c120c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonSprites:
+  - {fileID: 21300000, guid: d618409aa856b5742a469a4a59493081, type: 3}
+  - {fileID: 21300000, guid: 970380aa694c0c8459db59e79b1a650c, type: 3}
+  - {fileID: 21300000, guid: f3a0e166dd92ae545833b71d4ba81b45, type: 3}
+  - {fileID: 21300000, guid: 010dcc1aeec49b848a5db89fee4ad156, type: 3}
 --- !u!1001 &51670769263559535
 PrefabInstance:
   m_ObjectHideFlags: 0

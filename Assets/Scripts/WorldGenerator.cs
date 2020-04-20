@@ -17,7 +17,7 @@ public class WorldGenerator : MonoBehaviour
 
     private const float m_boundX = 80 - 10;
     private const float m_boundY = 60 - 10;
-    private const float m_boundAroundFire = 15;
+    private const float m_boundAroundFire = 20;
     private float m_coalEaterTimer;
     private float m_manEaterTimer;
 
@@ -59,7 +59,7 @@ public class WorldGenerator : MonoBehaviour
         m_dayStep = DayTime / 5; // Number of moons
         m_nextStep = m_dayStep;
 
-        var positions = GenerateStuff(Terrier, 100, TerrierNumber);
+        var positions = GenerateStuff(Terrier, 80, TerrierNumber);
         foreach (var h in HittableDecorations)
         {
             h.transform.localScale = Vector3.one * 3;
