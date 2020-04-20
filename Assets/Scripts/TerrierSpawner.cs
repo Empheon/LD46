@@ -96,10 +96,10 @@ public class TerrierSpawner : MonoBehaviour
         while (d < GlowDuration)
         {
             d += Time.deltaTime;
-            var r = Mathf.Lerp(0, m_glowColor.r, d / GlowDuration);
-            var g = Mathf.Lerp(0, m_glowColor.g, d / GlowDuration);
-            var b = Mathf.Lerp(0, m_glowColor.b, d / GlowDuration);
-            var a = Mathf.Lerp(0, m_glowColor.a, d / GlowDuration);
+            var r = Mathf.Lerp(m_transparent.r, m_glowColor.r, d / GlowDuration);
+            var g = Mathf.Lerp(m_transparent.g, m_glowColor.g, d / GlowDuration);
+            var b = Mathf.Lerp(m_transparent.b, m_glowColor.b, d / GlowDuration);
+            var a = Mathf.Lerp(m_transparent.a, m_glowColor.a, d / GlowDuration);
             Glow.color = new Color(r, g, b, a);
             yield return null;
         }
@@ -111,10 +111,10 @@ public class TerrierSpawner : MonoBehaviour
         while (d < GlowDuration)
         {
             d += Time.deltaTime;
-            var r = Mathf.Lerp(m_glowColor.r, 0, d / GlowDuration);
-            var g = Mathf.Lerp(m_glowColor.g, 0, d / GlowDuration);
-            var b = Mathf.Lerp(m_glowColor.b, 0, d / GlowDuration);
-            var a = Mathf.Lerp(m_glowColor.a, 0, d / GlowDuration);
+            var r = Mathf.Lerp(m_glowColor.r, m_transparent.r, d / GlowDuration);
+            var g = Mathf.Lerp(m_glowColor.g, m_transparent.g, d / GlowDuration);
+            var b = Mathf.Lerp(m_glowColor.b, m_transparent.b, d / GlowDuration);
+            var a = Mathf.Lerp(m_glowColor.a, m_transparent.a, d / GlowDuration);
             Glow.color = new Color(r, g, b, a);
             yield return null;
         }
